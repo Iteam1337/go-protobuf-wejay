@@ -2,6 +2,7 @@ package types
 
 import (
 	"github.com/Iteam1337/go-protobuf-wejay/message"
+	"github.com/Iteam1337/go-protobuf-wejay/version"
 	"github.com/golang/protobuf/proto"
 )
 
@@ -10,6 +11,7 @@ type MessageType interface {
 	Inv() MessageType
 	Message() proto.Message
 	String() string
+	ByteAndVersion() [2]byte
 }
 
 // InputType …
@@ -62,6 +64,11 @@ func (i InputType) String() string {
 	return string(i)
 }
 
+// ByteAndVersion …
+func (i InputType) ByteAndVersion() [2]byte {
+	return [2]byte{byte(i), byte(version.Version)}
+}
+
 // ResponseType …
 type ResponseType byte
 
@@ -110,4 +117,9 @@ func (r ResponseType) Message() (pb proto.Message) {
 
 func (r ResponseType) String() string {
 	return string(r)
+}
+
+// ByteAndVersion …
+func (r ResponseType) ByteAndVersion() [2]byte {
+	return [2]byte{byte(r), byte(version.Version)}
 }
