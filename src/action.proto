@@ -1,0 +1,17 @@
+syntax = 'proto3';
+
+package main;
+
+message Action {
+    enum ActionType {
+        UNKNOWN = 0;
+        PLAY = 1;
+        PAUSE = 2;
+        NEXT = 3;
+        PREVIOUS = 4;
+        SHUFFLE = 5;
+    }
+
+    string user_id = 1;
+    ActionType action = 2;
+}
