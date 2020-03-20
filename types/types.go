@@ -1,5 +1,10 @@
 package types
 
+import (
+	"github.com/Iteam1337/go-protobuf-wejay/message"
+	"github.com/golang/protobuf/proto"
+)
+
 // InputType …
 type InputType byte
 
@@ -29,6 +34,23 @@ func (i InputType) Inv() (r ResponseType) {
 	return
 }
 
+// Message protobuf message
+func (i InputType) Message() (pb proto.Message) {
+	switch i {
+	case IPing:
+		pb = &message.Ping{}
+	case IAction:
+		pb = &message.Action{}
+	case INewUser:
+		pb = &message.NewUser{}
+	case IUserExists:
+		pb = &message.UserExists{}
+	case ICallbackURL:
+		pb = &message.CallbackURL{}
+	}
+	return
+}
+
 // ResponseType …
 type ResponseType byte
 
@@ -54,6 +76,23 @@ func (r ResponseType) Inv() (i InputType) {
 		i = IUserExists
 	case RCallbackURL:
 		i = ICallbackURL
+	}
+	return
+}
+
+// Message protobuf message
+func (r ResponseType) Message() (pb proto.Message) {
+	switch r {
+	case RPong:
+		pb = &message.Pong{}
+	case RAction:
+		pb = &message.ActionResponse{}
+	case RNewUser:
+		pb = &message.NewUserResponse{}
+	case RUserExists:
+		pb = &message.UserExistsResponse{}
+	case RCallbackURL:
+		pb = &message.CallbackURLResponse{}
 	}
 	return
 }

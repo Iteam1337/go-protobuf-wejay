@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := module
 
-.PHONY: all module clean test action newUser callbackURL
+.PHONY: all module clean test action newUser callbackURL ping
 
 clean:
 	@rm -f message/*
@@ -45,3 +45,11 @@ callbackURL:
 
 src/callbackURL.proto: callbackURL
 message/callbackURL.pb.go: callbackURL
+
+ping:
+	@mkdir -p message
+	@cd src; protoc --go_out=paths=source_relative:../message ping.proto
+	@echo "generated: ping"
+
+src/ping.proto: ping
+message/ping.pb.go: ping
