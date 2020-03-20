@@ -57,8 +57,8 @@ func (i *InputType) Res() (r ResponseType) {
 		r = RNewUser
 	case IUserExist:
 		r = RUserExists
-	case ICallbackURL
-	  r = RCallbackURL
+	case ICallbackURL:
+		r = RCallbackURL
 	}
 	return
 }
