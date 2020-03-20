@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := module
 
-.PHONY: all module clean go action newUser
+.PHONY: all module clean go action newUser callbackURL
 
 clean:
 	@rm -f message/*
@@ -33,3 +33,12 @@ userExists:
 
 src/userExists.proto: userExists
 message/userExists.pb.go: userExists
+
+
+callbackURL:
+	@mkdir -p message
+	@cd src; protoc --go_out=paths=source_relative:../message callbackURL.proto
+	@echo "generated: callbackURL"
+
+src/callbackURL.proto: callbackURL
+message/callbackURL.pb.go: callbackURL
