@@ -7,52 +7,48 @@ import (
 	"github.com/Iteam1337/go-protobuf-wejay/types"
 )
 
-func errInputType(name string, expected byte, i types.InputType) string {
-	return fmt.Sprintf("%s was expected to be '%s', got: '%s", name, string(expected), string(i))
+func errType(name string, expected byte, i types.MessageType) string {
+	return fmt.Sprintf("%s was expected to be '%s', got: '%s", name, string(expected), i.String())
 }
 
 func TestInputTypes(t *testing.T) {
 	if types.IPing != 'p' {
-		t.Error(errInputType("IPing", 'p', types.IPing))
+		t.Error(errType("IPing", 'p', types.IPing))
 	}
 	if types.IAction != 'a' {
-		t.Error(errInputType("IAction", 'a', types.IAction))
+		t.Error(errType("IAction", 'a', types.IAction))
 	}
 	if types.INewUser != 'n' {
-		t.Error(errInputType("INewUser", 'n', types.INewUser))
+		t.Error(errType("INewUser", 'n', types.INewUser))
 	}
 	if types.IUserExists != 'e' {
-		t.Error(errInputType("IUserExists", 'e', types.IUserExists))
+		t.Error(errType("IUserExists", 'e', types.IUserExists))
 	}
 	if types.ICallbackURL != 'c' {
-		t.Error(errInputType("ICallbackURL", 'c', types.ICallbackURL))
+		t.Error(errType("ICallbackURL", 'c', types.ICallbackURL))
 	}
-}
-
-func errResponseType(name string, expected byte, r types.ResponseType) string {
-	return fmt.Sprintf("%s was expected to be '%s', got: '%s", name, string(expected), string(r))
 }
 
 func TestResponseType(t *testing.T) {
 	if types.RPong != 'P' {
-		t.Error(errResponseType("RPong", 'P', types.RPong))
+		t.Error(errType("RPong", 'P', types.RPong))
 	}
 	if types.RAction != 'A' {
-		t.Error(errResponseType("RAction", 'A', types.RAction))
+		t.Error(errType("RAction", 'A', types.RAction))
 	}
 	if types.RNewUser != 'N' {
-		t.Error(errResponseType("RNewUser", 'N', types.RNewUser))
+		t.Error(errType("RNewUser", 'N', types.RNewUser))
 	}
 	if types.RUserExists != 'E' {
-		t.Error(errResponseType("RUserExists", 'E', types.RUserExists))
+		t.Error(errType("RUserExists", 'E', types.RUserExists))
 	}
 	if types.RCallbackURL != 'C' {
-		t.Error(errResponseType("RCallbackURL", 'C', types.RCallbackURL))
+		t.Error(errType("RCallbackURL", 'C', types.RCallbackURL))
 	}
 }
 
-func errInverse(name string, i types.InputType, r types.ResponseType) string {
-	return fmt.Sprintf("%s in reverse was expected to be '%s', got: '%s'", name, string(i.Inv()), string(r))
+func errInverse(name string, a types.MessageType, b types.MessageType) string {
+	return fmt.Sprintf("%s in reverse was expected to be '%s', got: '%s'", name, a.Inv().String(), b.String())
 }
 
 func TestInverse(t *testing.T) {

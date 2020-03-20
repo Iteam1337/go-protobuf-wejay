@@ -5,6 +5,13 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
+// MessageType …
+type MessageType interface {
+	Inv() MessageType
+	Message() proto.Message
+	String() string
+}
+
 // InputType …
 type InputType byte
 
@@ -18,7 +25,7 @@ const (
 )
 
 // Inv Response type
-func (i InputType) Inv() (r ResponseType) {
+func (i InputType) Inv() (r MessageType) {
 	switch i {
 	case IPing:
 		r = RPong
@@ -51,6 +58,10 @@ func (i InputType) Message() (pb proto.Message) {
 	return
 }
 
+func (i InputType) String() string {
+	return string(i)
+}
+
 // ResponseType …
 type ResponseType byte
 
@@ -64,7 +75,7 @@ const (
 )
 
 // Inv Input type
-func (r ResponseType) Inv() (i InputType) {
+func (r ResponseType) Inv() (i MessageType) {
 	switch r {
 	case RPong:
 		i = IPing
@@ -95,4 +106,8 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.CallbackURLResponse{}
 	}
 	return
+}
+
+func (r ResponseType) String() string {
+	return string(r)
 }
