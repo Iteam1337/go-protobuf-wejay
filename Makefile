@@ -1,14 +1,17 @@
 .DEFAULT_GOAL := module
 
-.PHONY: all module clean go action newUser callbackURL
+.PHONY: all module clean test action newUser callbackURL
 
 clean:
 	@rm -f message/*
 
-module:
+module: test
 	@mkdir -p message
 	@cd src; protoc --go_out=paths=source_relative:../message *.proto
 	@echo "generated all"
+
+test:
+	@go test ./
 
 action:
 	@mkdir -p message
