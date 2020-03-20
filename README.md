@@ -8,5 +8,5 @@
 Generate:
 ```sh
 make
-# if make is not present, check Makefile
+# if `make` is not present, check Makefile
 ```

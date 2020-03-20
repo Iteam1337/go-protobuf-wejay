@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := module
 
-.PHONY: all module clean go action message
+.PHONY: all module clean go action newUser
 
 clean:
 	@rm -f message/*
@@ -18,10 +18,18 @@ action:
 src/action.proto: action
 message/action.pb.go: action
 
-message:
+newUser:
 	@mkdir -p message
-	@cd src; protoc --go_out=paths=source_relative:../message message.proto
-	@echo "generated: message"
+	@cd src; protoc --go_out=paths=source_relative:../message newUser.proto
+	@echo "generated: newUser"
 
-src/message.proto: message
-message/message.pb.go: message
+src/newUser.proto: newUser
+message/newUser.pb.go: newUser
+
+userExists:
+	@mkdir -p message
+	@cd src; protoc --go_out=paths=source_relative:../message userExists.proto
+	@echo "generated: userExists"
+
+src/userExists.proto: userExists
+message/userExists.pb.go: userExists
