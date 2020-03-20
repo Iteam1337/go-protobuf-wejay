@@ -1,6 +1,6 @@
 syntax = 'proto3';
 
-package main;
+package message;
 
 message Action {
     enum ActionType {
