@@ -2,7 +2,7 @@ syntax = 'proto3';
 
 package message;
 
-import weak "artist.proto";
+import "artist.proto";
 
 message Track {
     repeated

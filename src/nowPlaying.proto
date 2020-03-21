@@ -2,7 +2,7 @@ syntax = 'proto3';
 
 package message;
 
-import weak "track.proto";
+import "track.proto";
 
 message NowPlaying {
     string user_id = 1;
