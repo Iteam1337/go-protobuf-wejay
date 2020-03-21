@@ -1,0 +1,13 @@
+syntax = 'proto3';
+
+package message;
+
+message Listen {
+  string user_id = 1;
+}
+
+message ListenResponse {
+  string user_id = 1;
+  bool   ok      = 2;
+  string error   = 3;
+}

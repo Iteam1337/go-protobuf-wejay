@@ -25,6 +25,7 @@ func TestInputTypes(t *testing.T) {
 		{"IUserExists", 'e', types.IUserExists},
 		{"ICallbackURL", 'c', types.ICallbackURL},
 		{"INowPlaying", 'x', types.INowPlaying},
+		{"IListen", 'l', types.IListen},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -40,6 +41,7 @@ func TestResponseType(t *testing.T) {
 		{"RUserExists", 'E', types.RUserExists},
 		{"RCallbackURL", 'C', types.RCallbackURL},
 		{"RNowPlaying", 'X', types.RNowPlaying},
+		{"RListen", 'L', types.RListen},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
