@@ -24,6 +24,7 @@ const (
 	INewUser     InputType = 'n'
 	IUserExists  InputType = 'e'
 	ICallbackURL InputType = 'c'
+	INowPlaying  InputType = 'x'
 )
 
 // Inv Response type
@@ -39,6 +40,8 @@ func (i InputType) Inv() (r MessageType) {
 		r = RUserExists
 	case ICallbackURL:
 		r = RCallbackURL
+	case INowPlaying:
+		r = RNowPlaying
 	}
 	return
 }
@@ -56,6 +59,8 @@ func (i InputType) Message() (pb proto.Message) {
 		pb = &message.UserExists{}
 	case ICallbackURL:
 		pb = &message.CallbackURL{}
+	case INowPlaying:
+		pb = &message.NowPlaying{}
 	}
 	return
 }
@@ -79,6 +84,7 @@ const (
 	RNewUser     ResponseType = 'N'
 	RUserExists  ResponseType = 'E'
 	RCallbackURL ResponseType = 'C'
+	RNowPlaying  ResponseType = 'X'
 )
 
 // Inv Input type
@@ -94,6 +100,8 @@ func (r ResponseType) Inv() (i MessageType) {
 		i = IUserExists
 	case RCallbackURL:
 		i = ICallbackURL
+	case RNowPlaying:
+		i = INowPlaying
 	}
 	return
 }
@@ -111,6 +119,8 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.UserExistsResponse{}
 	case RCallbackURL:
 		pb = &message.CallbackURLResponse{}
+	case RNowPlaying:
+		pb = &message.NowPlayingResponse{}
 	}
 	return
 }

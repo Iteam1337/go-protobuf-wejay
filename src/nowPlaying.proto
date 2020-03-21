@@ -1,0 +1,16 @@
+syntax = 'proto3';
+
+package message;
+
+import weak "track.proto";
+
+message NowPlaying {
+    string user_id = 1;
+}
+
+message NowPlayingResponse {
+    string user_id = 1;
+    Track  track   = 2;
+    bool   ok      = 3;
+    string error   = 4;
+}
