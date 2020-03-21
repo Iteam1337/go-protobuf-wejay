@@ -19,13 +19,14 @@ type InputType byte
 
 // InputTypeEnum …
 const (
-	IPing        InputType = 'p'
 	IAction      InputType = 'a'
-	INewUser     InputType = 'n'
-	IUserExists  InputType = 'e'
 	ICallbackURL InputType = 'c'
-	INowPlaying  InputType = 'x'
+	IDeleteUser  InputType = 'd'
+	IUserExists  InputType = 'e'
 	IListen      InputType = 'l'
+	INewUser     InputType = 'n'
+	IPing        InputType = 'p'
+	INowPlaying  InputType = 'x'
 )
 
 // Inv Response type
@@ -45,6 +46,8 @@ func (i InputType) Inv() (r MessageType) {
 		r = RNowPlaying
 	case IListen:
 		r = RListen
+	case IDeleteUser:
+		r = RDeleteUser
 	}
 	return
 }
@@ -66,6 +69,8 @@ func (i InputType) Message() (pb proto.Message) {
 		pb = &message.NowPlaying{}
 	case IListen:
 		pb = &message.Listen{}
+	case IDeleteUser:
+		pb = &message.DeleteUser{}
 	}
 	return
 }
@@ -84,13 +89,14 @@ type ResponseType byte
 
 // ResponseTypeEnum …
 const (
-	RPong        ResponseType = 'P'
 	RAction      ResponseType = 'A'
-	RNewUser     ResponseType = 'N'
-	RUserExists  ResponseType = 'E'
 	RCallbackURL ResponseType = 'C'
-	RNowPlaying  ResponseType = 'X'
+	RDeleteUser  ResponseType = 'D'
+	RUserExists  ResponseType = 'E'
 	RListen      ResponseType = 'L'
+	RNewUser     ResponseType = 'N'
+	RPong        ResponseType = 'P'
+	RNowPlaying  ResponseType = 'X'
 )
 
 // Inv Input type
@@ -110,6 +116,8 @@ func (r ResponseType) Inv() (i MessageType) {
 		i = INowPlaying
 	case RListen:
 		i = IListen
+	case RDeleteUser:
+		i = IDeleteUser
 	}
 	return
 }
@@ -131,6 +139,8 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.NowPlayingResponse{}
 	case RListen:
 		pb = &message.ListenResponse{}
+	case RDeleteUser:
+		pb = &message.DeleteUserResponse{}
 	}
 	return
 }

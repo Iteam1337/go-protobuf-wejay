@@ -26,6 +26,7 @@ func TestInputTypes(t *testing.T) {
 		{"ICallbackURL", 'c', types.ICallbackURL},
 		{"INowPlaying", 'x', types.INowPlaying},
 		{"IListen", 'l', types.IListen},
+		{"IDeleteUser", 'd', types.IDeleteUser},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -42,6 +43,7 @@ func TestResponseType(t *testing.T) {
 		{"RCallbackURL", 'C', types.RCallbackURL},
 		{"RNowPlaying", 'X', types.RNowPlaying},
 		{"RListen", 'L', types.RListen},
+		{"RDeleteUser", 'D', types.RDeleteUser},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -67,9 +69,10 @@ func TestInverse(t *testing.T) {
 		{"IUserExists", types.IUserExists, types.RUserExists},
 		{"ICallbackURL", types.ICallbackURL, types.RCallbackURL},
 		{"INowPlaying", types.INowPlaying, types.RNowPlaying},
+		{"IDeleteUser", types.IDeleteUser, types.RDeleteUser},
 	} {
 		if x.a.Inv() != x.b {
-			t.Error(errInverse(x.n, x.a, x.b))
+			t.Error(errInverse(x.n, x.a.Inv(), x.b))
 		}
 	}
 }

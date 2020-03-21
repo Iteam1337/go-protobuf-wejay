@@ -1,0 +1,13 @@
+syntax = 'proto3';
+
+package message;
+
+message DeleteUser {
+  string user_id = 1;
+}
+
+message DeleteUserResponse {
+  string user_id = 1;
+  bool   ok      = 2;
+  string error   = 3;
+}
