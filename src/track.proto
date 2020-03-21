@@ -5,10 +5,10 @@ package message;
 import "artist.proto";
 
 message Track {
-    repeated
-    Artist artists  = 1;
-    int64  duration = 2;
-    string id       = 3;
-    string name     = 4;
-    string uri      = 5;
+  repeated
+  Artist artists  = 1;
+  int64  duration = 2;
+  string id       = 3;
+  string name     = 4;
+  string uri      = 5;
 }

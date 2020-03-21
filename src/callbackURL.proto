@@ -3,12 +3,12 @@ syntax = 'proto3';
 package message;
 
 message CallbackURL {
-    string user_id = 1;
+  string user_id = 1;
 }
 
 message CallbackURLResponse {
-    string user_id = 1;
-    string url     = 2;
-    bool   ok      = 3;
-    string error   = 4;
+  string user_id = 1;
+  string url     = 2;
+  bool   ok      = 3;
+  string error   = 4;
 }

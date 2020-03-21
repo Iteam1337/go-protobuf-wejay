@@ -3,22 +3,22 @@ syntax = 'proto3';
 package message;
 
 message Action {
-    enum ActionType {
-        UNKNOWN  = 0;
-        PLAY     = 1;
-        PAUSE    = 2;
-        NEXT     = 3;
-        PREVIOUS = 4;
-        SHUFFLE  = 5;
-    }
+  enum ActionType {
+    UNKNOWN  = 0;
+    PLAY     = 1;
+    PAUSE    = 2;
+    NEXT     = 3;
+    PREVIOUS = 4;
+    SHUFFLE  = 5;
+  }
 
-    string     user_id = 1;
-    ActionType action  = 2;
+  string     user_id = 1;
+  ActionType action  = 2;
 }
 
 
 message ActionResponse {
-    string user_id = 1;
-    bool   ok      = 2;
-    string error   = 3;
+  string user_id = 1;
+  bool   ok      = 2;
+  string error   = 3;
 }

@@ -3,12 +3,12 @@ syntax = 'proto3';
 package message;
 
 message NewUser {
-    string user_id = 1;
-    string code    = 2;
+  string user_id = 1;
+  string code    = 2;
 }
 
 message NewUserResponse {
-    string user_id = 1;
-    bool   ok      = 2;
-    string error   = 3;
+  string user_id = 1;
+  bool   ok      = 2;
+  string error   = 3;
 }
