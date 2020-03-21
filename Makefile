@@ -1,18 +1,19 @@
-.DEFAULT_GOAL := module
+.DEFAULT_GOAL := all
 
 .PHONY: all module clean test message src
 
 clean:
 	@rm -f message/*
 
-module: test
+all: test module
+
+module:
 	@mkdir -p message
 	@cd src; protoc --go_out=paths=source_relative:../message *.proto
 	@echo "generated all"
 
 message: module
-message: src
+src: module
 
 test:
 	@go test ./
-
