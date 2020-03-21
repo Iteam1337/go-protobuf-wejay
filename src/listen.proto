@@ -20,7 +20,7 @@ message ListenResponse {
   }
 
   string user_id = 1;
-  Change chage   = 2;
+  Change change  = 2;
   bytes  meta    = 3;
   bool   ok      = 4;
   string error   = 5;
