@@ -11,9 +11,9 @@ message ListenResponse {
     STATE_CHANGE = 0;
   }
 
-  string     user_id = 1;
-  ActionType type    = 2;
-  bytes      meta    = 3;
-  bool       ok      = 4;
-  string     error   = 5;
+  string     user_id     = 1;
+  ActionType action_type = 2;
+  bytes      meta        = 3;
+  bool       ok          = 4;
+  string     error       = 5;
 }
