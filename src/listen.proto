@@ -7,13 +7,21 @@ message Listen {
 }
 
 message ListenResponse {
-  enum ActionType {
-    STATE_CHANGE = 0;
+  enum Playback {
+    LISTENING = 0;
+    ACTIVE    = 1;
+    PROGRESS  = 2;
+    CURRENT   = 3;
   }
 
-  string     user_id     = 1;
-  ActionType action_type = 2;
-  bytes      meta        = 3;
-  bool       ok          = 4;
-  string     error       = 5;
+  enum Change {
+    ACTION   = 0;
+    PLAYBACK = 1;
+  }
+
+  string user_id = 1;
+  Change chage   = 2;
+  bytes  meta    = 3;
+  bool   ok      = 4;
+  string error   = 5;
 }

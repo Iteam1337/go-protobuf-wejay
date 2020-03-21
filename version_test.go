@@ -8,7 +8,7 @@ import (
 
 func TestVersion(t *testing.T) {
 	v := version.Version
-	if v != 0 {
-		t.Errorf("version was expected to be 0, got: %d", v)
+	if v != 1 {
+		t.Errorf("version was expected to be 1, got: %d", v)
 	}
 }
