@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-.PHONY: all module clean test message src
+.PHONY: all module clean test tests message src
 
 clean:
 	@rm -f message/*
@@ -17,3 +17,5 @@ src: module
 
 test:
 	@go test ./
+
+tests: test
