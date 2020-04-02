@@ -25,11 +25,10 @@ const (
 	INewUser       InputType = 'd'
 	IPing          InputType = 'e'
 	IJoinRoom      InputType = 'f'
-	ILeaveRoom     InputType = 'g'
-	IQueryRooms    InputType = 'h'
-	IRoomExists    InputType = 'i'
-	IUserLeaveRoom InputType = 'j'
-	IUserRoom      InputType = 'k'
+	IQueryRooms    InputType = 'g'
+	IRoomExists    InputType = 'h'
+	IUserLeaveRoom InputType = 'i'
+	IUserRoom      InputType = 'j'
 )
 
 // Inv Response type
@@ -47,8 +46,6 @@ func (i InputType) Inv() (r MessageType) {
 		r = RPong
 	case IJoinRoom:
 		r = RJoinRoom
-	case ILeaveRoom:
-		r = RLeaveRoom
 	case IQueryRooms:
 		r = RQueryRooms
 	case IRoomExists:
@@ -76,8 +73,6 @@ func (i InputType) Message() (pb proto.Message) {
 		pb = &message.Ping{}
 	case IJoinRoom:
 		pb = &message.JoinRoom{}
-	case ILeaveRoom:
-		pb = &message.LeaveRoom{}
 	case IQueryRooms:
 		pb = &message.QueryRooms{}
 	case IRoomExists:
@@ -110,11 +105,10 @@ const (
 	RNewUser       ResponseType = 'D'
 	RPong          ResponseType = 'E'
 	RJoinRoom      ResponseType = 'F'
-	RLeaveRoom     ResponseType = 'G'
-	RQueryRooms    ResponseType = 'H'
-	RRoomExists    ResponseType = 'I'
-	RUserLeaveRoom ResponseType = 'J'
-	RUserRoom      ResponseType = 'K'
+	RQueryRooms    ResponseType = 'G'
+	RRoomExists    ResponseType = 'H'
+	RUserLeaveRoom ResponseType = 'I'
+	RUserRoom      ResponseType = 'J'
 )
 
 // Inv Input type
@@ -132,8 +126,6 @@ func (r ResponseType) Inv() (i MessageType) {
 		i = IPing
 	case RJoinRoom:
 		i = IJoinRoom
-	case RLeaveRoom:
-		i = ILeaveRoom
 	case RQueryRooms:
 		i = IQueryRooms
 	case RRoomExists:
@@ -161,8 +153,6 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.Pong{}
 	case RJoinRoom:
 		pb = &message.JoinRoomResponse{}
-	case RLeaveRoom:
-		pb = &message.LeaveRoomResponse{}
 	case RQueryRooms:
 		pb = &message.QueryRoomsResponse{}
 	case RRoomExists:

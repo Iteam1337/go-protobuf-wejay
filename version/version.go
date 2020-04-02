@@ -1,4 +1,4 @@
 package version
 
 // Version package version
-const Version int = 3
+const Version int = 4

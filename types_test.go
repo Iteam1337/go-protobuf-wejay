@@ -25,11 +25,10 @@ func TestInputTypes(t *testing.T) {
 		{'d', "INewUser", types.INewUser},
 		{'e', "IPing", types.IPing},
 		{'f', "IJoinRoom", types.IJoinRoom},
-		{'g', "ILeaveRoom", types.ILeaveRoom},
-		{'h', "IQueryRooms", types.IQueryRooms},
-		{'i', "IRoomExists", types.IRoomExists},
-		{'j', "IUserLeaveRoom", types.IUserLeaveRoom},
-		{'k', "IUserRoom", types.IUserRoom},
+		{'g', "IQueryRooms", types.IQueryRooms},
+		{'h', "IRoomExists", types.IRoomExists},
+		{'i', "IUserLeaveRoom", types.IUserLeaveRoom},
+		{'j', "IUserRoom", types.IUserRoom},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -45,11 +44,10 @@ func TestResponseType(t *testing.T) {
 		{'D', "RNewUser", types.RNewUser},
 		{'E', "RPong", types.RPong},
 		{'F', "RJoinRoom", types.RJoinRoom},
-		{'G', "RLeaveRoom", types.RLeaveRoom},
-		{'H', "RQueryRooms", types.RQueryRooms},
-		{'I', "RRoomExists", types.RRoomExists},
-		{'J', "RUserLeaveRoom", types.RUserLeaveRoom},
-		{'K', "RUserRoom", types.RUserRoom},
+		{'G', "RQueryRooms", types.RQueryRooms},
+		{'H', "RRoomExists", types.RRoomExists},
+		{'I', "RUserLeaveRoom", types.RUserLeaveRoom},
+		{'J', "RUserRoom", types.RUserRoom},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -75,7 +73,6 @@ func TestInverse(t *testing.T) {
 		{"NewUser", types.INewUser, types.RNewUser},
 		{"Ping", types.IPing, types.RPong},
 		{"JoinRoom", types.IJoinRoom, types.RJoinRoom},
-		{"LeaveRoom", types.ILeaveRoom, types.RLeaveRoom},
 		{"QueryRooms", types.IQueryRooms, types.RQueryRooms},
 		{"RoomExists", types.IRoomExists, types.RRoomExists},
 		{"UserLeaveRoom", types.IUserLeaveRoom, types.RUserLeaveRoom},
