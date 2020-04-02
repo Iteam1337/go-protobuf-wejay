@@ -19,15 +19,16 @@ type InputType byte
 
 // InputTypeEnum …
 const (
-	ICallbackURL InputType = 'a'
-	IDeleteUser  InputType = 'b'
-	IUserExists  InputType = 'c'
-	INewUser     InputType = 'd'
-	IPing        InputType = 'e'
-	IJoinRoom    InputType = 'f'
-	ILeaveRoom   InputType = 'g'
-	IQueryRooms  InputType = 'h'
-	IRoomExists  InputType = 'i'
+	ICallbackURL   InputType = 'a'
+	IDeleteUser    InputType = 'b'
+	IUserExists    InputType = 'c'
+	INewUser       InputType = 'd'
+	IPing          InputType = 'e'
+	IJoinRoom      InputType = 'f'
+	ILeaveRoom     InputType = 'g'
+	IQueryRooms    InputType = 'h'
+	IRoomExists    InputType = 'i'
+	IUserLeaveRoom InputType = 'j'
 )
 
 // Inv Response type
@@ -51,6 +52,8 @@ func (i InputType) Inv() (r MessageType) {
 		r = RQueryRooms
 	case IRoomExists:
 		r = RRoomExists
+	case IUserLeaveRoom:
+		r = RUserLeaveRoom
 	}
 	return
 }
@@ -76,6 +79,8 @@ func (i InputType) Message() (pb proto.Message) {
 		pb = &message.QueryRooms{}
 	case IRoomExists:
 		pb = &message.RoomExists{}
+	case IUserLeaveRoom:
+		pb = &message.UserLeaveRoom{}
 	}
 	return
 }
@@ -94,15 +99,16 @@ type ResponseType byte
 
 // ResponseTypeEnum …
 const (
-	RCallbackURL ResponseType = 'A'
-	RDeleteUser  ResponseType = 'B'
-	RUserExists  ResponseType = 'C'
-	RNewUser     ResponseType = 'D'
-	RPong        ResponseType = 'E'
-	RJoinRoom    ResponseType = 'F'
-	RLeaveRoom   ResponseType = 'G'
-	RQueryRooms  ResponseType = 'H'
-	RRoomExists  ResponseType = 'I'
+	RCallbackURL   ResponseType = 'A'
+	RDeleteUser    ResponseType = 'B'
+	RUserExists    ResponseType = 'C'
+	RNewUser       ResponseType = 'D'
+	RPong          ResponseType = 'E'
+	RJoinRoom      ResponseType = 'F'
+	RLeaveRoom     ResponseType = 'G'
+	RQueryRooms    ResponseType = 'H'
+	RRoomExists    ResponseType = 'I'
+	RUserLeaveRoom ResponseType = 'J'
 )
 
 // Inv Input type
@@ -126,6 +132,8 @@ func (r ResponseType) Inv() (i MessageType) {
 		i = IQueryRooms
 	case RRoomExists:
 		i = IRoomExists
+	case RUserLeaveRoom:
+		i = IUserLeaveRoom
 	}
 	return
 }
@@ -151,6 +159,8 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.QueryRoomsResponse{}
 	case RRoomExists:
 		pb = &message.RoomExistsResponse{}
+	case RUserLeaveRoom:
+		pb = &message.UserLeaveRoomResponse{}
 	}
 	return
 }

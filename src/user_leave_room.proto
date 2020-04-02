@@ -1,0 +1,13 @@
+syntax = 'proto3';
+
+package message;
+
+message UserLeaveRoom {
+  string user_id = 1;
+}
+
+message UserLeaveRoomResponse {
+  string user_id = 1;
+  bool   ok      = 2;
+  string error   = 3;
+}

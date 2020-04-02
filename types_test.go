@@ -28,6 +28,7 @@ func TestInputTypes(t *testing.T) {
 		{'g', "ILeaveRoom", types.ILeaveRoom},
 		{'h', "IQueryRooms", types.IQueryRooms},
 		{'i', "IRoomExists", types.IRoomExists},
+		{'j', "IUserLeaveRoom", types.IUserLeaveRoom},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -46,6 +47,7 @@ func TestResponseType(t *testing.T) {
 		{'G', "RLeaveRoom", types.RLeaveRoom},
 		{'H', "RQueryRooms", types.RQueryRooms},
 		{'I', "RRoomExists", types.RRoomExists},
+		{'J', "RUserLeaveRoom", types.RUserLeaveRoom},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -74,6 +76,7 @@ func TestInverse(t *testing.T) {
 		{"LeaveRoom", types.ILeaveRoom, types.RLeaveRoom},
 		{"QueryRooms", types.IQueryRooms, types.RQueryRooms},
 		{"RoomExists", types.IRoomExists, types.RRoomExists},
+		{"UserLeaveRoom", types.IUserLeaveRoom, types.RUserLeaveRoom},
 	} {
 		if x.a.Inv() != x.b {
 			t.Error(errInverse(x.n, x.a.Inv(), x.b))
