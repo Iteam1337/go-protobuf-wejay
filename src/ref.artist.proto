@@ -2,7 +2,7 @@ syntax = 'proto3';
 
 package message;
 
-message Artist {
+message RefArtist {
   string name = 1;
   string id   = 2;
   string uri  = 3;

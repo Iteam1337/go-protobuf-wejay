@@ -3,13 +3,13 @@
 .PHONY: all module clean test tests message src
 
 clean:
-	@rm -f message/*
+	@rm -rf message
 
 all: test module
 
 module:
 	@mkdir -p message
-	@cd src; protoc --go_out=paths=source_relative:../message *.proto
+	@cd src; protoc -I=. --proto_path=. --go_out=plugins=grpc,paths=source_relative:../message **.proto
 	@echo "generated all"
 
 message: module

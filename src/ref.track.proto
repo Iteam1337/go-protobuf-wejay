@@ -1,0 +1,14 @@
+syntax = 'proto3';
+
+package message;
+
+import "ref.artist.proto";
+
+message RefTrack {
+  repeated
+  RefArtist artists  = 1;
+  int64     duration = 2;
+  string    id       = 3;
+  string    name     = 4;
+  string    uri      = 5;
+}

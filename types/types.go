@@ -19,35 +19,35 @@ type InputType byte
 
 // InputTypeEnum …
 const (
-	IAction      InputType = 'a'
 	ICallbackURL InputType = 'c'
 	IDeleteUser  InputType = 'd'
 	IUserExists  InputType = 'e'
-	IListen      InputType = 'l'
 	INewUser     InputType = 'n'
 	IPing        InputType = 'p'
-	INowPlaying  InputType = 'x'
+	IJoinRoom    InputType = 'j'
+	ILeaveRoom   InputType = 'l'
+	IQueryRooms  InputType = 'q'
 )
 
 // Inv Response type
 func (i InputType) Inv() (r MessageType) {
 	switch i {
-	case IPing:
-		r = RPong
-	case IAction:
-		r = RAction
-	case INewUser:
-		r = RNewUser
-	case IUserExists:
-		r = RUserExists
 	case ICallbackURL:
 		r = RCallbackURL
-	case INowPlaying:
-		r = RNowPlaying
-	case IListen:
-		r = RListen
 	case IDeleteUser:
 		r = RDeleteUser
+	case IUserExists:
+		r = RUserExists
+	case INewUser:
+		r = RNewUser
+	case IPing:
+		r = RPong
+	case IJoinRoom:
+		r = RJoinRoom
+	case ILeaveRoom:
+		r = RLeaveRoom
+	case IQueryRooms:
+		r = RQueryRooms
 	}
 	return
 }
@@ -55,22 +55,22 @@ func (i InputType) Inv() (r MessageType) {
 // Message protobuf message
 func (i InputType) Message() (pb proto.Message) {
 	switch i {
-	case IPing:
-		pb = &message.Ping{}
-	case IAction:
-		pb = &message.Action{}
-	case INewUser:
-		pb = &message.NewUser{}
-	case IUserExists:
-		pb = &message.UserExists{}
 	case ICallbackURL:
 		pb = &message.CallbackURL{}
-	case INowPlaying:
-		pb = &message.NowPlaying{}
-	case IListen:
-		pb = &message.Listen{}
 	case IDeleteUser:
 		pb = &message.DeleteUser{}
+	case IUserExists:
+		pb = &message.UserExists{}
+	case INewUser:
+		pb = &message.NewUser{}
+	case IPing:
+		pb = &message.Ping{}
+	case IJoinRoom:
+		pb = &message.JoinRoom{}
+	case ILeaveRoom:
+		pb = &message.LeaveRoom{}
+	case IQueryRooms:
+		pb = &message.QueryRooms{}
 	}
 	return
 }
@@ -89,35 +89,35 @@ type ResponseType byte
 
 // ResponseTypeEnum …
 const (
-	RAction      ResponseType = 'A'
 	RCallbackURL ResponseType = 'C'
 	RDeleteUser  ResponseType = 'D'
 	RUserExists  ResponseType = 'E'
-	RListen      ResponseType = 'L'
 	RNewUser     ResponseType = 'N'
 	RPong        ResponseType = 'P'
-	RNowPlaying  ResponseType = 'X'
+	RJoinRoom    ResponseType = 'J'
+	RLeaveRoom   ResponseType = 'L'
+	RQueryRooms  ResponseType = 'Q'
 )
 
 // Inv Input type
 func (r ResponseType) Inv() (i MessageType) {
 	switch r {
-	case RPong:
-		i = IPing
-	case RAction:
-		i = IAction
-	case RNewUser:
-		i = INewUser
-	case RUserExists:
-		i = IUserExists
 	case RCallbackURL:
 		i = ICallbackURL
-	case RNowPlaying:
-		i = INowPlaying
-	case RListen:
-		i = IListen
 	case RDeleteUser:
 		i = IDeleteUser
+	case RUserExists:
+		i = IUserExists
+	case RNewUser:
+		i = INewUser
+	case RPong:
+		i = IPing
+	case RJoinRoom:
+		i = IJoinRoom
+	case RLeaveRoom:
+		i = ILeaveRoom
+	case RQueryRooms:
+		i = IQueryRooms
 	}
 	return
 }
@@ -125,22 +125,22 @@ func (r ResponseType) Inv() (i MessageType) {
 // Message protobuf message
 func (r ResponseType) Message() (pb proto.Message) {
 	switch r {
-	case RPong:
-		pb = &message.Pong{}
-	case RAction:
-		pb = &message.ActionResponse{}
-	case RNewUser:
-		pb = &message.NewUserResponse{}
-	case RUserExists:
-		pb = &message.UserExistsResponse{}
 	case RCallbackURL:
 		pb = &message.CallbackURLResponse{}
-	case RNowPlaying:
-		pb = &message.NowPlayingResponse{}
-	case RListen:
-		pb = &message.ListenResponse{}
 	case RDeleteUser:
 		pb = &message.DeleteUserResponse{}
+	case RUserExists:
+		pb = &message.UserExistsResponse{}
+	case RNewUser:
+		pb = &message.NewUserResponse{}
+	case RPong:
+		pb = &message.Pong{}
+	case RJoinRoom:
+		pb = &message.JoinRoomResponse{}
+	case RLeaveRoom:
+		pb = &message.LeaveRoomResponse{}
+	case RQueryRooms:
+		pb = &message.QueryRoomsResponse{}
 	}
 	return
 }

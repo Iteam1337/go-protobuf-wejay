@@ -1,0 +1,17 @@
+syntax = 'proto3';
+
+package message;
+
+import "ref.room.proto";
+
+message LeaveRoom {
+  string user_id = 1;
+  string id      = 2;
+}
+
+message LeaveRoomResponse {
+  string  user_id = 1;
+  RefRoom room    = 2;
+  bool    ok      = 3;
+  string  error   = 4;
+}

@@ -1,0 +1,16 @@
+syntax = 'proto3';
+
+package message;
+
+import "ref.room.proto";
+
+message QueryRooms {
+  string name = 1;
+}
+
+message QueryRoomsResponse {
+  repeated
+  RefRoom room  = 1;
+  bool    ok    = 2;
+  string  error = 3;
+}
