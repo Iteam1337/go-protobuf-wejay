@@ -19,14 +19,15 @@ type InputType byte
 
 // InputTypeEnum …
 const (
-	ICallbackURL InputType = 'c'
-	IDeleteUser  InputType = 'd'
-	IUserExists  InputType = 'e'
-	INewUser     InputType = 'n'
-	IPing        InputType = 'p'
-	IJoinRoom    InputType = 'j'
-	ILeaveRoom   InputType = 'l'
-	IQueryRooms  InputType = 'q'
+	ICallbackURL InputType = 'a'
+	IDeleteUser  InputType = 'b'
+	IUserExists  InputType = 'c'
+	INewUser     InputType = 'd'
+	IPing        InputType = 'e'
+	IJoinRoom    InputType = 'f'
+	ILeaveRoom   InputType = 'g'
+	IQueryRooms  InputType = 'h'
+	IRoomExists  InputType = 'i'
 )
 
 // Inv Response type
@@ -48,6 +49,8 @@ func (i InputType) Inv() (r MessageType) {
 		r = RLeaveRoom
 	case IQueryRooms:
 		r = RQueryRooms
+	case IRoomExists:
+		r = RRoomExists
 	}
 	return
 }
@@ -71,6 +74,8 @@ func (i InputType) Message() (pb proto.Message) {
 		pb = &message.LeaveRoom{}
 	case IQueryRooms:
 		pb = &message.QueryRooms{}
+	case IRoomExists:
+		pb = &message.RoomExists{}
 	}
 	return
 }
@@ -89,14 +94,15 @@ type ResponseType byte
 
 // ResponseTypeEnum …
 const (
-	RCallbackURL ResponseType = 'C'
-	RDeleteUser  ResponseType = 'D'
-	RUserExists  ResponseType = 'E'
-	RNewUser     ResponseType = 'N'
-	RPong        ResponseType = 'P'
-	RJoinRoom    ResponseType = 'J'
-	RLeaveRoom   ResponseType = 'L'
-	RQueryRooms  ResponseType = 'Q'
+	RCallbackURL ResponseType = 'A'
+	RDeleteUser  ResponseType = 'B'
+	RUserExists  ResponseType = 'C'
+	RNewUser     ResponseType = 'D'
+	RPong        ResponseType = 'E'
+	RJoinRoom    ResponseType = 'F'
+	RLeaveRoom   ResponseType = 'G'
+	RQueryRooms  ResponseType = 'H'
+	RRoomExists  ResponseType = 'I'
 )
 
 // Inv Input type
@@ -118,6 +124,8 @@ func (r ResponseType) Inv() (i MessageType) {
 		i = ILeaveRoom
 	case RQueryRooms:
 		i = IQueryRooms
+	case RRoomExists:
+		i = IRoomExists
 	}
 	return
 }
@@ -141,6 +149,8 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.LeaveRoomResponse{}
 	case RQueryRooms:
 		pb = &message.QueryRoomsResponse{}
+	case RRoomExists:
+		pb = &message.RoomExistsResponse{}
 	}
 	return
 }

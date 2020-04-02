@@ -1,0 +1,14 @@
+syntax = 'proto3';
+
+package message;
+
+message RoomExists {
+  string id = 1;
+}
+
+message RoomExistsResponse {
+  string id     = 1;
+  bool   exists = 2;
+  bool   ok     = 3;
+  string error  = 4;
+}

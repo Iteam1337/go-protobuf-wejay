@@ -8,8 +8,8 @@ import (
 )
 
 type testTypes struct {
-	n string
 	b byte
+	n string
 	i types.MessageType
 }
 
@@ -19,14 +19,15 @@ func errType(name string, expected byte, i types.MessageType) string {
 
 func TestInputTypes(t *testing.T) {
 	for _, x := range []testTypes{
-		{"ICallbackURL", 'c', types.ICallbackURL},
-		{"IDeleteUser", 'd', types.IDeleteUser},
-		{"IUserExists", 'e', types.IUserExists},
-		{"INewUser", 'n', types.INewUser},
-		{"IPing", 'p', types.IPing},
-		{"IJoinRoom", 'j', types.IJoinRoom},
-		{"ILeaveRoom", 'l', types.ILeaveRoom},
-		{"IQueryRooms", 'q', types.IQueryRooms},
+		{'a', "ICallbackURL", types.ICallbackURL},
+		{'b', "IDeleteUser", types.IDeleteUser},
+		{'c', "IUserExists", types.IUserExists},
+		{'d', "INewUser", types.INewUser},
+		{'e', "IPing", types.IPing},
+		{'f', "IJoinRoom", types.IJoinRoom},
+		{'g', "ILeaveRoom", types.ILeaveRoom},
+		{'h', "IQueryRooms", types.IQueryRooms},
+		{'i', "IRoomExists", types.IRoomExists},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -36,14 +37,15 @@ func TestInputTypes(t *testing.T) {
 
 func TestResponseType(t *testing.T) {
 	for _, x := range []testTypes{
-		{"RCallbackURL", 'C', types.RCallbackURL},
-		{"RDeleteUser", 'D', types.RDeleteUser},
-		{"RUserExists", 'E', types.RUserExists},
-		{"RNewUser", 'N', types.RNewUser},
-		{"RPong", 'P', types.RPong},
-		{"RJoinRoom", 'J', types.RJoinRoom},
-		{"RLeaveRoom", 'L', types.RLeaveRoom},
-		{"RQueryRooms", 'Q', types.RQueryRooms},
+		{'A', "RCallbackURL", types.RCallbackURL},
+		{'B', "RDeleteUser", types.RDeleteUser},
+		{'C', "RUserExists", types.RUserExists},
+		{'D', "RNewUser", types.RNewUser},
+		{'E', "RPong", types.RPong},
+		{'F', "RJoinRoom", types.RJoinRoom},
+		{'G', "RLeaveRoom", types.RLeaveRoom},
+		{'H', "RQueryRooms", types.RQueryRooms},
+		{'I', "RRoomExists", types.RRoomExists},
 	} {
 		if x.i.String() != string(x.b) {
 			t.Error(errType(x.n, x.b, x.i))
@@ -63,14 +65,15 @@ func errInverse(name string, a types.MessageType, b types.MessageType) string {
 
 func TestInverse(t *testing.T) {
 	for _, x := range []testInverse{
-		{"ICallbackURL", types.ICallbackURL, types.RCallbackURL},
-		{"IDeleteUser", types.IDeleteUser, types.RDeleteUser},
-		{"IUserExists", types.IUserExists, types.RUserExists},
-		{"INewUser", types.INewUser, types.RNewUser},
-		{"IPing", types.IPing, types.RPong},
-		{"IJoinRoom", types.IJoinRoom, types.RJoinRoom},
-		{"ILeaveRoom", types.ILeaveRoom, types.RLeaveRoom},
-		{"IQueryRooms", types.IQueryRooms, types.RQueryRooms},
+		{"CallbackURL", types.ICallbackURL, types.RCallbackURL},
+		{"DeleteUser", types.IDeleteUser, types.RDeleteUser},
+		{"UserExists", types.IUserExists, types.RUserExists},
+		{"NewUser", types.INewUser, types.RNewUser},
+		{"Ping", types.IPing, types.RPong},
+		{"JoinRoom", types.IJoinRoom, types.RJoinRoom},
+		{"LeaveRoom", types.ILeaveRoom, types.RLeaveRoom},
+		{"QueryRooms", types.IQueryRooms, types.RQueryRooms},
+		{"RoomExists", types.IRoomExists, types.RRoomExists},
 	} {
 		if x.a.Inv() != x.b {
 			t.Error(errInverse(x.n, x.a.Inv(), x.b))
