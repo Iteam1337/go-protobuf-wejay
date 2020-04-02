@@ -29,6 +29,7 @@ const (
 	IQueryRooms    InputType = 'h'
 	IRoomExists    InputType = 'i'
 	IUserLeaveRoom InputType = 'j'
+	IUserRoom      InputType = 'k'
 )
 
 // Inv Response type
@@ -54,6 +55,8 @@ func (i InputType) Inv() (r MessageType) {
 		r = RRoomExists
 	case IUserLeaveRoom:
 		r = RUserLeaveRoom
+	case IUserRoom:
+		r = RUserRoom
 	}
 	return
 }
@@ -81,6 +84,8 @@ func (i InputType) Message() (pb proto.Message) {
 		pb = &message.RoomExists{}
 	case IUserLeaveRoom:
 		pb = &message.UserLeaveRoom{}
+	case IUserRoom:
+		pb = &message.UserRoom{}
 	}
 	return
 }
@@ -109,6 +114,7 @@ const (
 	RQueryRooms    ResponseType = 'H'
 	RRoomExists    ResponseType = 'I'
 	RUserLeaveRoom ResponseType = 'J'
+	RUserRoom      ResponseType = 'K'
 )
 
 // Inv Input type
@@ -134,6 +140,8 @@ func (r ResponseType) Inv() (i MessageType) {
 		i = IRoomExists
 	case RUserLeaveRoom:
 		i = IUserLeaveRoom
+	case RUserRoom:
+		i = IUserRoom
 	}
 	return
 }
@@ -161,6 +169,8 @@ func (r ResponseType) Message() (pb proto.Message) {
 		pb = &message.RoomExistsResponse{}
 	case RUserLeaveRoom:
 		pb = &message.UserLeaveRoomResponse{}
+	case RUserRoom:
+		pb = &message.UserRoomResponse{}
 	}
 	return
 }

@@ -1,0 +1,14 @@
+syntax = 'proto3';
+
+package message;
+
+message UserRoom {
+  string user_id = 1;
+}
+
+message UserRoomResponse {
+  string user_id = 1;
+  string room_id = 2;
+  bool   ok      = 3;
+  string error   = 4;
+}
