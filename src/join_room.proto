@@ -5,13 +5,13 @@ package message;
 import "ref.room.proto";
 
 message JoinRoom {
-  string user_id = 1;
-  string id      = 2;
+  string room_id = 1;
+  string user_id = 2;
 }
 
 message JoinRoomResponse {
-  string  user_id = 1;
-  RefRoom room    = 2;
+  RefRoom room    = 1;
+  string  user_id = 2;
   bool    ok      = 3;
   string  error   = 4;
 }
